@@ -14,15 +14,11 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Tan
+ * @author Tan Boon Jun, A0125418J
  */
-@Entity(name="User")
-@EntityListeners(UserEntityCallbacks.class)
+@Entity(name="Username")
 public class UserEntity implements Serializable {
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String name;
     private String password;
     private String contactNumber;
@@ -38,14 +34,6 @@ public class UserEntity implements Serializable {
         this.setPassword(password);
         this.setContactNumber(contactNumber);
         this.setEmail(email);
-    }
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
     
     public String getName() {
@@ -83,7 +71,7 @@ public class UserEntity implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (name != null ? name.hashCode() : 0);
         return hash;
     }
 
@@ -94,7 +82,7 @@ public class UserEntity implements Serializable {
             return false;
         }
         UserEntity other = (UserEntity) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.name == null && other.name != null) || (this.name != null && !this.name.equals(other.name))) {
             return false;
         }
         return true;
@@ -102,7 +90,7 @@ public class UserEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "ejb.UserEntity[ id=" + id + " ]";
+        return "ejb.UserEntity[ id=" + name + " ]";
     }
     
 }

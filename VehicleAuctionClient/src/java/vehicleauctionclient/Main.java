@@ -6,18 +6,21 @@
 package vehicleauctionclient;
 
 import ejb.UserServerBeanRemote;
+import ejb.ModelServerBeanRemote;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 import javax.ejb.EJB;
 
 /**
  *
- * @author Tan
+ * @author Tan Boon Jun, A0125418J
  */
 public class Main {
     @EJB
     private static UserServerBeanRemote userServerBean;
+    @EJB
+    private static ModelServerBeanRemote modelServerBean;
 
     /**
      * @param args the command line arguments
@@ -57,9 +60,9 @@ public class Main {
                 if (userSelect.equals("1")) {
                     displayAddUser();
                 } else if (userSelect.equals("2")) {
-                    
+                    displayDeleteUser(); // Not done
                 } else if (userSelect.equals("3")) {
-                    
+                    displayAddModel();
                 } else if (userSelect.equals("4")) {
                     
                 } else if (userSelect.equals("5")) {
@@ -91,26 +94,69 @@ public class Main {
     }
     
     private void displayAddUser() {
-        Long customerID;
         String name;
         String password;
         String contactNumber;
         String email;
         
         try {
-            
             System.out.println("You have selected Add User Account");
             name = getString("user name", null);
             password = getString("default password", null);
             contactNumber = getString("contact number", null);
             email = getString("email", null);
             
-            userServerBean.addUser(name, password, contactNumber, email);
-            System.out.println("User account has been successfully created");
-            
+            if (userServerBean.userExist(name) == true) {
+                System.out.println("Error! Account has existed in database\n");
+            } else {
+                userServerBean.addUser(name, password, contactNumber, email);
+                System.out.println("User account has been successfully created!\n");
+            }
         } catch (Exception e) {
             System.out.println("Failed to create new user: " + e.getMessage() + "\n");
         }
+    }
+    
+    private void displayDeleteUser() {
+        String name;
+        
+        try {
+            System.out.println("You have selected Delete User Account");
+            name = getString("user name", null);
+            
+            // If Associated with bids or payments = Cannot be deleted, "Error! Account is associated with bids or payments, cannot be deleted!"
+            // If don't exist, "Error! Account don't exist in database\n"
+            // Else, "User account has been successfully deleted!\n"
+        } catch (Exception e) {
+            System.out.println("Failed to delete existing user: " + e.getMessage() + "\n");
+        } 
+    }
+    
+    private void displayAddModel() {
+        String make;
+        String model;
+        int manufacturedYear;
+        Scanner sc = new Scanner (System.in);
+        
+        try {
+            System.out.println("You have selected Add Vehicle Model");
+            make = getString("make", null);
+            model = getString("model", null);
+            System.out.print("Enter manufactured year: ");
+            manufacturedYear = sc.nextInt();
+            
+            if (modelServerBean.modelExist(make, model, manufacturedYear) == true) {
+                System.out.println("Error! Account has existed in database\n");
+            } else {
+                modelServerBean.addModel(make, model, manufacturedYear);
+                System.out.println("Vehicle Model has been successfully created!\n");
+            }
+            
+            
+            System.out.println("You have selected Add New Model");
+        } catch (Exception e) {
+            System.out.println("Failed to add new model: " + e.getMessage() + "\n");
+        }     
     }
     
     // Helper Function - Accept String (not null value)

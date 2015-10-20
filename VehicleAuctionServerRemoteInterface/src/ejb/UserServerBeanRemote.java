@@ -9,12 +9,13 @@ import javax.ejb.Remote;
 
 /**
  *
- * @author Tan
+ * @author Tan Boon Jun, A0125418J
  */
 @Remote
 public interface UserServerBeanRemote {
 
     public void addUser(String name, String password, String contactNumber, String email);
+    public boolean userExist(String name);
     public void removeUser(String name);
     
 }

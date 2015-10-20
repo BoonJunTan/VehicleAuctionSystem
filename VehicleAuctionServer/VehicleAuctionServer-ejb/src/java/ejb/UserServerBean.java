@@ -16,12 +16,14 @@ import javax.persistence.Query;
 
 /**
  *
- * @author Tan
+ * @author Tan Boon Jun, A0125418J
  */
 @Stateless
 public class UserServerBean implements UserServerBeanRemote {
     @PersistenceContext
     private EntityManager em;
+    
+    ArrayList<String> userList = new ArrayList<String>();
     
     public UserServerBean() {
         
@@ -30,7 +32,17 @@ public class UserServerBean implements UserServerBeanRemote {
     public void addUser(String name, String password, String contactNumber, String email) {
         UserEntity u = new UserEntity();
         u.addUser(name, password, contactNumber, email);
+        userList.add(name);
         em.persist(u);
+    }
+    
+    public boolean userExist(String name) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void removeUser(String name) {
