@@ -1,1 +1,14 @@
 /VehicleAuctionServerInterface/nbproject/private/
+/VehicleAuctionServer/VehicleAuctionServer-ejb/nbproject/private/
+/VehicleAuctionServerRemoteInterface/nbproject/private/
+/VehicleAuctionServer/VehicleAuctionServer-war/nbproject/private/
+/VehicleAuctionClient/nbproject/private/
+/VehicleAuctionServer/VehicleAuctionServer-ejb/build/
+/VehicleAuctionServerRemoteInterface/dist/
+/VehicleAuctionServerRemoteInterface/build/
+/VehicleAuctionServer/build/
+/VehicleAuctionClient/dist/
+/VehicleAuctionClient/build/
+/VehicleAuctionServer/VehicleAuctionServer-war/build/
+/VehicleAuctionServer/VehicleAuctionServer-ejb/dist/
+/VehicleAuctionServer/VehicleAuctionServer-war/dist/
