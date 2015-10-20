@@ -5,6 +5,7 @@
  */
 package ejb;
 
+import java.util.Date;
 import javax.ejb.Remote;
 
 /**
@@ -12,12 +13,7 @@ import javax.ejb.Remote;
  * @author Tan Boon Jun, A0125418J
  */
 @Remote
-public interface ModelServerBeanRemote {
-    
-    public int addModel(String make, String model, int manufacturedYear);
-    public boolean modelExist(String make, String model, int manufacturedYear);
-    public void updateModel(String name);
-    public void removeModel(String name);
+public interface VehicleServerBeanRemote {
+    public void addVehicle(int modelNumber, String registrationNumber, int chassisNumber, int engineNumber, String description, String startingBid, Date auctionEndTime);
     public void remove();
-    
 }

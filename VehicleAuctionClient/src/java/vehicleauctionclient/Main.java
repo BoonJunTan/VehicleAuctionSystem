@@ -7,8 +7,11 @@ package vehicleauctionclient;
 
 import ejb.UserServerBeanRemote;
 import ejb.ModelServerBeanRemote;
+import ejb.VehicleServerBeanRemote;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import javax.ejb.EJB;
 
@@ -21,6 +24,8 @@ public class Main {
     private static UserServerBeanRemote userServerBean;
     @EJB
     private static ModelServerBeanRemote modelServerBean;
+    @EJB
+    private static VehicleServerBeanRemote vehicleServerBean;
 
     /**
      * @param args the command line arguments
@@ -68,7 +73,7 @@ public class Main {
                 } else if (userSelect.equals("5")) {
                     
                 } else if (userSelect.equals("6")) {
-                    
+                    displayAddVehicle();
                 } else if (userSelect.equals("7")) {
                     
                 } else if (userSelect.equals("8")) {
@@ -93,6 +98,7 @@ public class Main {
         }
     }
     
+    // User choice 1 - Add User
     private void displayAddUser() {
         String name;
         String password;
@@ -117,6 +123,7 @@ public class Main {
         }
     }
     
+    // User choice 2 - Delete User
     private void displayDeleteUser() {
         String name;
         
@@ -132,6 +139,7 @@ public class Main {
         } 
     }
     
+    // User choice 3 - Add Model
     private void displayAddModel() {
         String make;
         String model;
@@ -148,14 +156,47 @@ public class Main {
             if (modelServerBean.modelExist(make, model, manufacturedYear) == true) {
                 System.out.println("Error! Account has existed in database\n");
             } else {
-                modelServerBean.addModel(make, model, manufacturedYear);
-                System.out.println("Vehicle Model has been successfully created!\n");
+                int id = modelServerBean.addModel(make, model, manufacturedYear);
+                System.out.println("Vehicle Model has been successfully created! Model Id: " + id + "\n");
             }
-            
-            
-            System.out.println("You have selected Add New Model");
         } catch (Exception e) {
             System.out.println("Failed to add new model: " + e.getMessage() + "\n");
+        }     
+    }
+    
+    // User choice 6 - Add Vehicle
+    private void displayAddVehicle() {
+        int modelNumber;
+        String registrationNumber;
+        int chassisNumber;
+        int engineNumber;
+        String description;
+        String startingBid;
+        Date currentDate = new Date();
+        Scanner sc = new Scanner (System.in);
+        
+        try {
+            System.out.print("Enter model number: ");
+            modelNumber = sc.nextInt();
+            System.out.println("You have selected Add Vehicle");
+            registrationNumber = getString("registration number", null);
+            System.out.print("Enter chassis number: ");
+            chassisNumber = sc.nextInt();
+            System.out.println("");
+            System.out.print("Enter engine number: ");
+            engineNumber = sc.nextInt();
+            description = getString("description", null);
+            startingBid = getString("starting bid", null);
+            String eDate = getString("auction end time", null);
+            Date auctionEndTime = new SimpleDateFormat("HH:mm dd/MM/yyyy").parse(eDate);
+            if (auctionEndTime.compareTo(currentDate) < 0) {
+                System.out.println("Error! Auction end time already passed.");
+            } else {
+                vehicleServerBean.addVehicle(modelNumber, registrationNumber, chassisNumber, engineNumber, description, startingBid, auctionEndTime);
+                System.out.println("Auction Vehicle has been successfully added!\n");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to add new vehicle: " + e.getMessage() + "\n");
         }     
     }
     

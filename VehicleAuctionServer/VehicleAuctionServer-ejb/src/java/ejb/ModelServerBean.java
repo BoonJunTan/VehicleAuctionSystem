@@ -23,18 +23,21 @@ public class ModelServerBean implements ModelServerBeanRemote {
     @PersistenceContext
     private EntityManager em;
     
+    int id = 0;
     ArrayList<String []> modelList = new ArrayList<String []>();
     
     public ModelServerBean() {
         
     }
     
-    public void addModel(String make, String model, int manufacturedYear) {
+    public int addModel(String make, String model, int manufacturedYear) {
+        id++;
         ModelEntity m = new ModelEntity();
-        m.addModel(make, model, manufacturedYear);
+        m.addModel(id, make, model, manufacturedYear);
         String [] details = {make, model, Integer.toString(manufacturedYear)};
         modelList.add(details);
         em.persist(m);
+        return id;
     }
     
     public boolean modelExist(String make, String model, int manufacturedYear) {
@@ -56,6 +59,6 @@ public class ModelServerBean implements ModelServerBeanRemote {
     
     @Remove
     public void remove() {
-        System.out.println("CustomerManagerBean:remove()");        
+        System.out.println("ModelManagerBean:remove()");        
     }
 }
