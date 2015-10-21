@@ -10,6 +10,7 @@ import ejb.ModelServerBeanRemote;
 import ejb.VehicleServerBeanRemote;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -154,9 +155,9 @@ public class Main {
             manufacturedYear = sc.nextInt();
             
             if (modelServerBean.modelExist(make, model, manufacturedYear) == true) {
-                System.out.println("Error! Account has existed in database\n");
+                System.out.println("Error! Model has existed in database\n");
             } else {
-                int id = modelServerBean.addModel(make, model, manufacturedYear);
+                int id = modelServerBean.createModel(make, model, manufacturedYear);
                 System.out.println("Vehicle Model has been successfully created! Model Id: " + id + "\n");
             }
         } catch (Exception e) {
@@ -168,31 +169,30 @@ public class Main {
     private void displayAddVehicle() {
         int modelNumber;
         String registrationNumber;
-        int chassisNumber;
-        int engineNumber;
+        String chassisNumber;
+        String engineNumber;
         String description;
         String startingBid;
         Date currentDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+        dateFormat.format(currentDate);
         Scanner sc = new Scanner (System.in);
         
         try {
+            System.out.println("You have selected Add Vehicle");
             System.out.print("Enter model number: ");
             modelNumber = sc.nextInt();
-            System.out.println("You have selected Add Vehicle");
             registrationNumber = getString("registration number", null);
-            System.out.print("Enter chassis number: ");
-            chassisNumber = sc.nextInt();
-            System.out.println("");
-            System.out.print("Enter engine number: ");
-            engineNumber = sc.nextInt();
+            chassisNumber = getString("chassis number", null);
+            engineNumber = getString("engine number", null);
             description = getString("description", null);
             startingBid = getString("starting bid", null);
             String eDate = getString("auction end time", null);
             Date auctionEndTime = new SimpleDateFormat("HH:mm dd/MM/yyyy").parse(eDate);
             if (auctionEndTime.compareTo(currentDate) < 0) {
-                System.out.println("Error! Auction end time already passed.");
+                System.out.println("Error! Auction end time already passed.\n");
             } else {
-                vehicleServerBean.addVehicle(modelNumber, registrationNumber, chassisNumber, engineNumber, description, startingBid, auctionEndTime);
+                vehicleServerBean.addVehicle(modelNumber, registrationNumber, chassisNumber, engineNumber, description, startingBid, currentDate, auctionEndTime);
                 System.out.println("Auction Vehicle has been successfully added!\n");
             }
         } catch (Exception e) {

@@ -14,6 +14,6 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface VehicleServerBeanRemote {
-    public void addVehicle(int modelNumber, String registrationNumber, int chassisNumber, int engineNumber, String description, String startingBid, Date auctionEndTime);
+    public void addVehicle(int modelNumber, String registrationNumber, String chassisNumber, String engineNumber, String description, String startingBid, Date auctionStartTime, Date auctionEndTime);
     public void remove();
 }

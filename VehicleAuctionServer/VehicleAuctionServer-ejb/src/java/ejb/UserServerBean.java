@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import javax.ejb.Remove;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -18,7 +18,7 @@ import javax.persistence.Query;
  *
  * @author Tan Boon Jun, A0125418J
  */
-@Stateless
+@Stateful
 public class UserServerBean implements UserServerBeanRemote {
     @PersistenceContext
     private EntityManager em;

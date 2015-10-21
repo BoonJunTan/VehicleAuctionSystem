@@ -6,11 +6,15 @@
 package ejb;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,11 +22,11 @@ import javax.persistence.Id;
  */
 @Entity(name="Model")
 public class ModelEntity implements Serializable {
-    @Id
     private int id = 0;
     private String make;
     private String model;
     private int manufacturedYear;
+    private Collection<VehicleEntity> vehicle = new ArrayList<VehicleEntity>();
 
     public void addModel(int id, String make, String model, int manufacturedYear) {
         this.setId(id);
@@ -31,6 +35,16 @@ public class ModelEntity implements Serializable {
         this.setManufacturedYear(manufacturedYear);
     }
     
+    @OneToMany(cascade={CascadeType.ALL}, mappedBy="vehicle")
+    public Collection<VehicleEntity> getVehicle() {
+        return vehicle;
+    }
+    
+    public void setVehicles(Collection<VehicleEntity> vehicle) {
+        this.vehicle = vehicle;
+    }
+    
+    @Id
     public int getId() {
         return id;
     }
