@@ -5,7 +5,10 @@
  */
 package ejb;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Vector;
 import javax.ejb.Remote;
 
 /**
@@ -20,6 +23,13 @@ public interface VehicleAuctionManagerBeanRemote {
     public int createModel(String make, String model, int manufacturedYear);
     public void createVehicle(int modelNumber, String registrationNumber, String chassisNumber, String engineNumber, String description, String startingBid, Date auctionStartTime, Date auctionEndTime);
     
+    /* ------------------ Display ------------------ */
+    public List <Vector> getVehicles(int modelId);
+    public List <Vector> getCurrentAuctions();
+    public List <Vector> getClosedAuctions();
+    public List <Vector> getBids(int vehicleId);
+    public ArrayList <String[]> getCertificate();
+            
     /* ------------------ ADDING ------------------ */
     public void addBid();
     public void addVehicle();
@@ -37,13 +47,18 @@ public interface VehicleAuctionManagerBeanRemote {
     public boolean modelExist(String make, String model, int manufacturedYear);
     public boolean modelIdExist(int modelId);
     public boolean checkIfVehicleAssociated(int modelId);
+    public boolean checkIfVehicleExist(int vehicleId);
+    public boolean checkIfVehicleHasBid(int vehicleId);
     
     /* ------------------ UPDATE ------------------ */
     public void updateModel(int modelId, String make, String model, int manufacturedYear);
-    
+    public void updateVehicle(int vehicleId, String startingBid, String description, Date auctionEndTime);
+    public void updateCertificationStatus(int certificateId, String status);
+            
     /* ------------------ DELETE ------------------ */
     public void removeUser(String name);
     public void removeModel(int modelId);
+    public void removeVehicle(int vehicleId);
     
     /* ------------------ DEFAULT ------------------ */
     public void remove();

@@ -20,7 +20,7 @@ import javax.persistence.Temporal;
  *
  * @author Tan Boon Jun, A0125418J
  */
-@Entity
+@Entity(name="Certification")
 public class CertificationEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
