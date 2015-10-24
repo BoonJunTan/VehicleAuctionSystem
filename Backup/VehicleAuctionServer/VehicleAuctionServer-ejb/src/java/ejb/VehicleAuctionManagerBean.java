@@ -315,6 +315,29 @@ public class VehicleAuctionManagerBean implements VehicleAuctionManagerBeanRemot
         return certificateDetails;
     }
     
+    @Override
+    public ArrayList <String[]> searchVehicle(String make, String model, String year, String status, String min, String max) {
+        Query q = em.createQuery("SELECT v FROM Vehicle v");
+        ArrayList<String[]> vehicleDetails = new ArrayList<String[]>();
+        String [] vehicleArray = new String [8];
+        
+        if (make == null) {
+                System.out.println("EMPTY");
+            } else if (make.equals("")) {
+                System.out.println("HEllo");
+            } else {
+                System.out.println("Lame");
+            }
+        
+        for (Object o: q.getResultList()) {
+            VehicleEntity v = (VehicleEntity) o;
+            
+        }
+        
+        return vehicleDetails;
+    }
+    
+    
     /* ------------------ ADDING  ------------------ */
     @Override
     public void addBid() {
@@ -441,6 +464,16 @@ public class VehicleAuctionManagerBean implements VehicleAuctionManagerBeanRemot
         return true;
     }
     
+    @Override
+    public boolean checkPassword(String name, String password) {
+        userEntity = em.find(UserEntity.class, name);
+        if (userEntity.getPassword().equals(password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     /* ------------------ UPDATE ------------------ */
     @Override
     public void updateModel(int modelId, String make, String model, int manufacturedYear) {
@@ -475,6 +508,16 @@ public class VehicleAuctionManagerBean implements VehicleAuctionManagerBeanRemot
         em.flush();
     }
     
+    @Override
+    public void updateProfile(String username, String password, String contactNumber, String email) {
+        userEntity = em.find(UserEntity.class, username);
+        userEntity.setContactNumber(contactNumber);
+        userEntity.setEmail(email);
+        userEntity.setPassword(password);
+        em.persist(userEntity);
+        em.flush();
+    }
+    
     /* ------------------ DELETE ------------------ */
     @Override
     public void removeUser(String name) {
@@ -497,6 +540,17 @@ public class VehicleAuctionManagerBean implements VehicleAuctionManagerBeanRemot
         em.flush();
     }
     
+    @Override
+    /* ------------------ Other Function ------------------ */
+    public boolean webLogin(String name, String password) {
+        Query q = em.createQuery("SELECT u FROM Username u WHERE u.name = '" + name + "' AND u.password = '" + password + "'");
+        if (q.getResultList().isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+            
     /* ------------------ DEFAULT ------------------ */
     @Override
     @Remove

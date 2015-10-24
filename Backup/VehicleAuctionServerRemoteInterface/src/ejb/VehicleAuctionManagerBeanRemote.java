@@ -29,6 +29,7 @@ public interface VehicleAuctionManagerBeanRemote {
     public List <Vector> getClosedAuctions();
     public List <Vector> getBids(int vehicleId);
     public ArrayList <String[]> getCertificate();
+    public ArrayList <String[]> searchVehicle(String make, String model, String year, String status, String min, String max);;
             
     /* ------------------ ADDING ------------------ */
     public void addBid();
@@ -49,16 +50,21 @@ public interface VehicleAuctionManagerBeanRemote {
     public boolean checkIfVehicleAssociated(int modelId);
     public boolean checkIfVehicleExist(int vehicleId);
     public boolean checkIfVehicleHasBid(int vehicleId);
+    public boolean checkPassword(String name, String password);
     
     /* ------------------ UPDATE ------------------ */
     public void updateModel(int modelId, String make, String model, int manufacturedYear);
     public void updateVehicle(int vehicleId, String startingBid, String description, Date auctionEndTime);
     public void updateCertificationStatus(int certificateId, String status);
+    public void updateProfile(String username, String password, String contactNumber, String email);
             
     /* ------------------ DELETE ------------------ */
     public void removeUser(String name);
     public void removeModel(int modelId);
     public void removeVehicle(int vehicleId);
+    
+    /* ------------------ Other Function ------------------ */
+    public boolean webLogin(String name, String password);
     
     /* ------------------ DEFAULT ------------------ */
     public void remove();
