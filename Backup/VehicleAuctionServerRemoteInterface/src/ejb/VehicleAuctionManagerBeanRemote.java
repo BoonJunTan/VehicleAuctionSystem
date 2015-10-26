@@ -8,6 +8,7 @@ package ejb;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 import javax.ejb.Remote;
 
@@ -19,18 +20,21 @@ import javax.ejb.Remote;
 public interface VehicleAuctionManagerBeanRemote {
     /* ------------------ CREATION ------------------ */
     public void createUser(String name, String password, String contactNumber, String email);
-    public void createBid(Date bidTime, String bidAmount, String name);
+    public void createBid(String name, int vehicleId, String bidAmount);
     public int createModel(String make, String model, int manufacturedYear);
     public void createVehicle(int modelNumber, String registrationNumber, String chassisNumber, String engineNumber, String description, String startingBid, Date auctionStartTime, Date auctionEndTime);
-    
+    public void createPayment(String username, String vehicleId, String cardType, String cardNo, String holder, String amount);
     /* ------------------ Display ------------------ */
     public List <Vector> getVehicles(int modelId);
     public List <Vector> getCurrentAuctions();
     public List <Vector> getClosedAuctions();
-    public List <Vector> getBids(int vehicleId);
+    public ArrayList <String[]> getBids(int vehicleId);
     public ArrayList <String[]> getCertificate();
     public ArrayList <String[]> searchVehicle(String make, String model, String year, String status, String min, String max);;
-            
+    public Map <String, String> getDetailedVehicle(int vehicleId);
+    public ArrayList <String[]> getUserBids(String username);
+    public ArrayList <String[]> getPastWonAuction(String username);
+    
     /* ------------------ ADDING ------------------ */
     public void addBid();
     public void addVehicle();

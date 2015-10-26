@@ -102,7 +102,7 @@
                                         type="text" class="form-control" name="txtEmail" id="txtEmail"
                                         placeholder="Enter Your Email" required="required">
                                 </div>
-                                <button type="submit" value="submit" style="width: 100%; font-size:1.1em;" class="btn btn-large btn btn-primary btn-lg btn-block" ><b>Register</b></button>
+                                <button type="submit" value="submit" style="width: 100%; font-size:1.1em;" class="btn btn-large btn btn-primary btn-lg btn-block" ><b>Update Profile</b></button>
 
                             </form>
 

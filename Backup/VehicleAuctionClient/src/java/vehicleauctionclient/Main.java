@@ -477,19 +477,24 @@ public class Main {
                     System.out.println("Email: " + p.get(14));
                     
                     // Display part payment
-                    ArrayList<String[]> paymentDetails = (ArrayList)p.get(15);
-                    for (int x = 0; x < paymentDetails.size() ; x++) {
-                        String [] current = paymentDetails.get(x);
+                    if (p.size() > 15) {
+                        ArrayList<String[]> paymentDetails = (ArrayList)p.get(15);
+                        for (int x = 0; x < paymentDetails.size() ; x++) {
+                            String [] current = paymentDetails.get(x);
+                            System.out.println("");
+                            System.out.println("Payment: " + (x+1));
+                            System.out.println("Amount: " + current[0]);
+                            System.out.println("Card Type: " + current[1]);
+                            System.out.println("Time: " + current[2]);
+                        }
                         System.out.println("");
-                        System.out.println("Payment: " + (x+1));
-                        System.out.println("Amount: " + current[0]);
-                        System.out.println("Card Type: " + current[1]);
-                        System.out.println("Time: " + current[2]);
+                        int amountPaid = (Integer) p.get(16);
+                        System.out.println("Total amount paid: " + amountPaid);
+                        System.out.println("Total amount remaining: " + (Integer.valueOf(startBid.substring(1)) - amountPaid));
+                        
+                    } else {
+                        System.out.println("No Payment made");
                     }
-                    System.out.println("");
-                    String amountPaid = (String) p.get(16);
-                    System.out.println("Total amount paid: " + amountPaid);
-                    System.out.println("Total amount remaining: " + (Integer.valueOf(startBid) - Integer.valueOf(amountPaid)));
                 }
                 System.out.println("");
                 counter++;
@@ -512,7 +517,7 @@ public class Main {
             if (vambr.checkIfVehicleExist(vehicleId) == false) {
                 System.out.println("Error! Vehicle id does not exist in database\n");
             } else {
-                ArrayList<String[]> bidDetails = (ArrayList) vambr.getBids(vehicleId);
+                ArrayList<String[]> bidDetails = (ArrayList <String []>) vambr.getBids(vehicleId);
                 if (bidDetails.isEmpty()) {
                     System.out.println("No bids for vehicle.\n");
                 } else {

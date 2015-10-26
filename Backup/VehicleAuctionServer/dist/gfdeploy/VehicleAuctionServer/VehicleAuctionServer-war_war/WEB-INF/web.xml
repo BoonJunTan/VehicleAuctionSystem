@@ -9,6 +9,30 @@
         <jsp-file>/registerStatus.jsp</jsp-file>
     </servlet>
     <servlet>
+        <servlet-name>paymentStatus</servlet-name>
+        <jsp-file>/paymentStatus.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>makePayment</servlet-name>
+        <jsp-file>/makePayment.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>pastWonAuction</servlet-name>
+        <jsp-file>/pastWonAuction.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>pastBids</servlet-name>
+        <jsp-file>/pastBids.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>bidVehicleStatus</servlet-name>
+        <jsp-file>/bidVehicleStatus.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>vehicleDetailedStatus</servlet-name>
+        <jsp-file>/vehicleDetailedStatus.jsp</jsp-file>
+    </servlet>
+    <servlet>
         <servlet-name>loginStatus</servlet-name>
         <jsp-file>/loginStatus.jsp</jsp-file>
     </servlet>
@@ -44,6 +68,30 @@
         <servlet-name>logoutStatus</servlet-name>
         <jsp-file>/logoutStatus.jsp</jsp-file>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>paymentStatus</servlet-name>
+        <url-pattern>/paymentStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>makePayment</servlet-name>
+        <url-pattern>/makePayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>pastBids</servlet-name>
+        <url-pattern>/pastBids</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>pastWonAuction</servlet-name>
+        <url-pattern>/pastWonAuction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bidVehicleStatus</servlet-name>
+        <url-pattern>/bidVehicleStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vehicleDetailedStatus</servlet-name>
+        <url-pattern>/vehicleDetailedStatus</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>registerStatus</servlet-name>
         <url-pattern>/registerStatus</url-pattern>

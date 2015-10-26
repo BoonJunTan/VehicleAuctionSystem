@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/loginStatus.jsp</file>
+            <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/vehicleDetailedStatus.jsp</file>
             <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/register.jsp</file>
+            <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/searchVehicleStatus.jsp</file>
             <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/src/java/servlets/VehicleAuctionServlet.java</file>
-            <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/login.jsp</file>
+            <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/member.jsp</file>
             <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/registerStatus.jsp</file>
             <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/index.jsp</file>
+            <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/searchVehicle.jsp</file>
             <file>file:/Users/Tan/NetBeansProjects/IS2103/Backup/VehicleAuctionServer/VehicleAuctionServer-war/web/WEB-INF/web.xml</file>
         </group>
     </open-files>

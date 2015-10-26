@@ -38,6 +38,12 @@
                     <a href="searchVehicle" onclick = $("#menu-close").click(); >Search Vehicle</a>
                 </li>
                 <li>
+                    <a href="vehicleAuction/pastBids" onclick = $("#menu-close").click(); >Past Bid</a>
+                </li>
+                <li>
+                    <a href="vehicleAuction/pastWonAuction" onclick = $("#menu-close").click(); >Past Won Auction</a>
+                </li>
+                <li>
                     <a href="updateProfile" onclick = $("#menu-close").click(); ><%= session.getAttribute("username") %>'s Profile</a>
                 </li>
                 <li>
@@ -61,6 +67,10 @@
                         <a href="updateProfile" class="btn btn-dark btn-lg">Update Profile</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="searchVehicle" class="btn btn-dark btn-lg">Search Vehicle</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="vehicleAuction/pastBids" class="btn btn-dark btn-lg">Past Bids</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="vehicleAuction/pastWonAuction" class="btn btn-dark btn-lg">Past Won Auction</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="vehicleAuction/logoutStatus" class="btn btn-dark btn-lg">Logout</a>
                         <%
