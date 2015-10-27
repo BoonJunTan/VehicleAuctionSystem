@@ -14,7 +14,7 @@ import javax.ejb.Remote;
 
 /**
  *
- * @author Tan
+ * @author Tan Boon Jun, A0125418J
  */
 @Remote
 public interface VehicleAuctionManagerBeanRemote {
@@ -24,6 +24,7 @@ public interface VehicleAuctionManagerBeanRemote {
     public int createModel(String make, String model, int manufacturedYear);
     public void createVehicle(int modelNumber, String registrationNumber, String chassisNumber, String engineNumber, String description, String startingBid, Date auctionStartTime, Date auctionEndTime);
     public void createPayment(String username, String vehicleId, String cardType, String cardNo, String holder, String amount);
+    
     /* ------------------ Display ------------------ */
     public List <Vector> getVehicles(int modelId);
     public List <Vector> getCurrentAuctions();

@@ -39,6 +39,11 @@ public class CertificationEntity implements Serializable {
         
     }
     
+    public void addCertificate(String username, String content) {
+        this.setCertiferName(username);
+        this.setCertificationContent(content);
+    }
+    
     public Long getId() {
         return id;
     }

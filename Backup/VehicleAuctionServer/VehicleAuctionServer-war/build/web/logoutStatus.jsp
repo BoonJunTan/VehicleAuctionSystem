@@ -42,9 +42,7 @@
                             Redirecting back to home page in 3 seconds...
                         </div>
                     </div>
-                    
                 </div>
-                
             </div>
             <div class="panel-footer" align="center"><font style="color: #111"> Perfecting your experience with us right now! </font></div>
         </div>

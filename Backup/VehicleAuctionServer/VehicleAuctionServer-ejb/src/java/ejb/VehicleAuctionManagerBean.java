@@ -83,6 +83,7 @@ public class VehicleAuctionManagerBean implements VehicleAuctionManagerBeanRemot
             System.out.println("Error with getting remaining time");
         }
         
+        // Add 1 hr if end time less than 1 hr
         if (diff < 3600000) {
             //Date newEndTime = new Date(vehicleEntity.getAuctionEndTime().getTime() + (1000 * 60 * 60));
             //vehicleEntity.setAuctionEndTime(newEndTime);
@@ -605,10 +606,12 @@ public class VehicleAuctionManagerBean implements VehicleAuctionManagerBeanRemot
             }
             
             if (v.getCertification() != null) {
-                detailedVehicle.put("certificate", "Certification Not empty");
-                detailedVehicle.put("certificateName", v.getCertification().getCertiferName());
-                detailedVehicle.put("certificateTime", dateFormat.format(v.getCertification().getCertificationTime()));
-                detailedVehicle.put("certificateContent", v.getCertification().getCertificationContent());
+                if (v.getCertification().getStatus().equals("Processed")) {
+                    detailedVehicle.put("certificate", "Certification Not empty");
+                    detailedVehicle.put("certificateName", v.getCertification().getCertiferName());
+                    detailedVehicle.put("certificateTime", dateFormat.format(v.getCertification().getCertificationTime()));
+                    detailedVehicle.put("certificateContent", v.getCertification().getCertificationContent());
+                }
             }
 
             if (!v.getBids().isEmpty()) {

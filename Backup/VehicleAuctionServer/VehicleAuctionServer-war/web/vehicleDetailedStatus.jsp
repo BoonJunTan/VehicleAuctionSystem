@@ -88,7 +88,7 @@
                         
                         out.print("<table class='table table-bordered'>");
                         if (detailedVehicles.get("certificate") != null) {
-                            out.print("<tr class='success'><tr><td>Certifier</td><td>Time</td><td>Description</td></tr><tr>");
+                            out.print("<tr class='success'><td>Certifier</td><td>Time</td><td>Description</td></tr><tr>");
                             out.print("<tr><td cellpadding='5'>" + detailedVehicles.get("certificateName") + "</td>");
                             out.print("<td cellpadding='5'>" + detailedVehicles.get("certificateTime") + "</td>");
                             out.print("<td cellpadding='5'>" + detailedVehicles.get("certificateContent") + "</td></tr>");

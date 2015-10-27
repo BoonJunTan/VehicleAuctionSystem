@@ -546,18 +546,18 @@ public class Main {
             System.out.println("You have selected Process Certifications");
             ArrayList <String []> certificateList = vambr.getCertificate();
             if (certificateList.isEmpty()) {
-                System.out.println("Error! No certificate to in database.\n");
+                System.out.println("Error! No (Unread/Processing) certificate in database.\n");
             } else {
                 ArrayList<Integer> certificateIdList = new ArrayList<Integer>();
                 for (int i = 0; i < certificateList.size(); i++) {
                     System.out.println("");
                     String [] currentCertificate = certificateList.get(i);
-                    System.out.println("Certificate Id: " + currentCertificate[1]);
-                    certificateIdList.add(Integer.valueOf(currentCertificate[1]));
-                    System.out.println("Certifier: " + currentCertificate[2]);
-                    System.out.println("Time: " + currentCertificate[3]);
-                    System.out.println("Ceritification Details: " + currentCertificate[4]);
-                    System.out.println("Vehicle Id: " + currentCertificate[5]);
+                    System.out.println("Certificate Id: " + currentCertificate[0]);
+                    certificateIdList.add(Integer.valueOf(currentCertificate[0]));
+                    System.out.println("Certifier: " + currentCertificate[1]);
+                    System.out.println("Time: " + currentCertificate[2]);
+                    System.out.println("Ceritification Details: " + currentCertificate[3]);
+                    System.out.println("Vehicle Id: " + currentCertificate[4]);
                 }
                 System.out.println("");
                 System.out.print("Enter the Request id: ");
